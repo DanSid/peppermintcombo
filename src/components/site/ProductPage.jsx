@@ -381,30 +381,30 @@ export default function ProductPage({ product }) {
   </div>
 </section>
 
-      {product.extraImages && product.extraImages.length > 0 && (
-        <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10">
-          <Reveal direction="up">
-            <p className="section-label">Additional views</p>
-            <h2 className="mt-4 font-display text-5xl text-[#f3e1e1]">More of the ritual and finish.</h2>
-          </Reveal>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {product.extraImages.map((image, index) => (
-              <Reveal key={`${image}-${index}`} direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.08}>
-                <div 
-                  className="dudley-card dudley-media-panel h-[360px] overflow-hidden cursor-pointer"
-                  onClick={() => openImageModal(product.gallery.length + (product.detailImage ? 1 : 0) + (product.detailImage2 ? 1 : 0) + index)} // Calculate correct index
-                >
-                  <img 
-                    src={image} 
-                    alt={`${product.name} extra ${index + 1}`} 
-                    className="h-full w-full object-contain p-4" 
-                  />
-                </div>
-              </Reveal>
-            ))}
+     {product.extraImages && product.extraImages.length > 0 && (
+  <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10">
+    <Reveal direction="up">
+      <p className="section-label">Additional views</p>
+      <h2 className="mt-4 font-display text-5xl text-[#f3e1e1]">More of the ritual and finish.</h2>
+    </Reveal>
+    <div className="mt-8 grid gap-6 md:grid-cols-2">
+      {product.extraImages.map((image, index) => (
+        <Reveal key={`${image}-${index}`} direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.08}>
+          <div 
+            className="dudley-card dudley-media-panel h-[500px] overflow-hidden cursor-pointer" // Increased height from 360px to 500px
+            onClick={() => openImageModal(product.gallery.length + (product.detailImage ? 1 : 0) + (product.detailImage2 ? 1 : 0) + index)}
+          >
+            <img 
+              src={image} 
+              alt={`${product.name} extra ${index + 1}`} 
+              className="h-full w-full object-cover p-1" // Changed object-contain to object-cover and reduced padding
+            />
           </div>
-        </section>
-      )}
+        </Reveal>
+      ))}
+    </div>
+  </section>
+)}
 
       <section id="routine" className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10">
         <Reveal direction="up">
