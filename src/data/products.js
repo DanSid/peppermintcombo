@@ -65,7 +65,7 @@ export const products = [
     accent: '#1FA37D',
     accentSoft: '#E8FFF7',
     accentDeep: '#0E3A30',
-    heroImage: '/assets/redesign/peppermint-duo.png',
+    heroImage: '/assets/DUDLEYS_Peppermint_Soothe_Shampoo_&_Conditioner_Motion.mp4',
     gallery: [
       '/assets/redesign/peppermint-duo.png',
       '/assets/redesign/peppermint-shampoo.png',
@@ -77,7 +77,7 @@ export const products = [
     ],
     detailImage: '/assets/redesign/peppermint-duo-alt.png',
     detailVideo: '/assets/Dudly\'s Peppermint Shampoo And Conditioner.mp4',
-    video: '/assets/DUDLEYS_Peppermint_Soothe_Shampoo_&_Conditioner_Motion.mp4',
+    // video: '/assets/DUDLEYS_Peppermint_Soothe_Shampoo_&_Conditioner_Motion.mp4',
     badge: 'Wash-day favorite',
     notes: ['Cooling sensation', 'Fresh routine', 'Balanced cleanse + condition'],
     highlights: [
