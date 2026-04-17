@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useRef } from 'react'
 import { products } from '../../data/products'
 import { AmazonRatingBadge, CouponStrip, PromoBanner } from './PromoElements'
-import { AmbientParticles } from './AmbientParticles'
+import { QuantumNodes } from './QuantumNodes'
 import { Reveal } from './Reveal'
 
 function RelatedProducts({ currentSlug }) {
@@ -134,26 +134,27 @@ export default function ProductPage({ product }) {
   };
 
   return (
-    <main className="relative overflow-hidden bg-[#080507] text-white">
+    <main className="relative overflow-hidden bg-transparent">
       <motion.div style={{ y: heroParticlesY }} className="absolute inset-0">
-        <AmbientParticles />
+        <QuantumNodes />
       </motion.div>
 
       <section ref={heroRef} className="relative overflow-hidden border-b border-white/10">
         <div
           className="absolute inset-0 opacity-80"
           style={{
-            background: `radial-gradient(circle at top, ${product.accent}33, transparent 28%), linear-gradient(180deg, rgba(7,4,6,0.88), rgba(7,4,6,0.98))`,
+            background:
+              'radial-gradient(circle at top, rgba(225, 237, 255, 0.76), transparent 30%), linear-gradient(180deg, rgba(164, 189, 221, 0.94), rgba(130, 160, 201, 0.98))',
           }}
         />
         <div className="dudley-grid absolute inset-0 opacity-[0.16]" />
         <motion.div
           style={{ y: heroAccentY }}
-          className="pointer-events-none absolute -right-10 top-24 hidden h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(239,200,104,0.18),transparent_68%)] blur-3xl lg:block"
+          className="pointer-events-none absolute -right-10 top-24 hidden h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(236,244,255,0.46),transparent_68%)] blur-3xl lg:block"
         />
         <motion.div
           style={{ y: useTransform(smoothProgress, [0, 1], [0, 55]) }}
-          className="pointer-events-none absolute left-0 top-32 hidden h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(213,156,161,0.16),transparent_70%)] blur-3xl lg:block"
+          className="pointer-events-none absolute left-0 top-32 hidden h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(196,219,247,0.34),transparent_70%)] blur-3xl lg:block"
         />
 
         <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-10 sm:px-8 lg:px-10 lg:pb-28">
@@ -215,7 +216,7 @@ export default function ProductPage({ product }) {
 
       <motion.div style={{ y: heroImageY, rotate: heroImageRotate }}>
         <Reveal direction="right">
-          <div className="dudley-card relative overflow-hidden">
+          <div className="hero-media-card relative overflow-hidden">
             <div
               className="absolute inset-0"
               style={{
@@ -226,7 +227,7 @@ export default function ProductPage({ product }) {
               {product.badge}
             </div>
             {product.heroImage?.endsWith('.mp4') ? (
-             <video
+               <video
                 src={product.heroImage}
                 autoPlay
                 muted
@@ -352,7 +353,7 @@ export default function ProductPage({ product }) {
         </Reveal>
       )}
 
-      {/* {(product.video || product.detailVideo) && (
+      {(product.video || product.detailVideo) && (
         <Reveal direction="up" delay={0.12}>
           <div className="dudley-card p-8">
             <div className="flex items-center gap-3">
@@ -376,35 +377,35 @@ export default function ProductPage({ product }) {
             </div>
           </div>
         </Reveal>
-      )} */}
+      )}
     </div>
   </div>
 </section>
 
-     {product.extraImages && product.extraImages.length > 0 && (
-  <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10">
-    <Reveal direction="up">
-      <p className="section-label">Additional views</p>
-      <h2 className="mt-4 font-display text-5xl text-[#f3e1e1]">More of the ritual and finish.</h2>
-    </Reveal>
-    <div className="mt-8 grid gap-6 md:grid-cols-2">
-      {product.extraImages.map((image, index) => (
-        <Reveal key={`${image}-${index}`} direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.08}>
-          <div 
-            className="dudley-card dudley-media-panel h-[500px] overflow-hidden cursor-pointer" // Increased height from 360px to 500px
-            onClick={() => openImageModal(product.gallery.length + (product.detailImage ? 1 : 0) + (product.detailImage2 ? 1 : 0) + index)}
-          >
-            <img 
-              src={image} 
-              alt={`${product.name} extra ${index + 1}`} 
-              className="h-full w-full object-cover p-1" // Changed object-contain to object-cover and reduced padding
-            />
+      {product.extraImages && product.extraImages.length > 0 && (
+        <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 lg:px-10">
+          <Reveal direction="up">
+            <p className="section-label">Additional views</p>
+            <h2 className="mt-4 font-display text-5xl text-[#f3e1e1]">More of the ritual and finish.</h2>
+          </Reveal>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {product.extraImages.map((image, index) => (
+              <Reveal key={`${image}-${index}`} direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.08}>
+                <div 
+                  className="dudley-card dudley-media-panel h-[360px] overflow-hidden cursor-pointer"
+                  onClick={() => openImageModal(product.gallery.length + (product.detailImage ? 1 : 0) + (product.detailImage2 ? 1 : 0) + index)} // Calculate correct index
+                >
+                  <img 
+                    src={image} 
+                    alt={`${product.name} extra ${index + 1}`} 
+                    className="h-full w-full object-contain p-4" 
+                  />
+                </div>
+              </Reveal>
+            ))}
           </div>
-        </Reveal>
-      ))}
-    </div>
-  </section>
-)}
+        </section>
+      )}
 
       <section id="routine" className="mx-auto max-w-7xl px-6 py-12 sm:px-8 lg:px-10">
         <Reveal direction="up">
